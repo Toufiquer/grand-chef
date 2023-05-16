@@ -10,6 +10,7 @@ import NotFound from "./page/NotFound/NotFound";
 import LogInRegister from "./page/LogInRegister/LogInRegister";
 import EditPosts from "./page/EditPost/EditPosts";
 import Footer from "./components/Footer/Footer";
+import Service from "./page/Service/Service";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/private" element={<Private />} />
         <Route path="/posts" element={<Posts />} />
+        <Route path="/services" element={<Service />} />
         <Route path="/addPost" element={<AddPost />} />
         <Route path="/updatePost" element={<UpdatePost />} />
         <Route path="/editPost" element={<EditPosts />} />
