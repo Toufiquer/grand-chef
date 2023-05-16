@@ -7,6 +7,7 @@ import Posts from "./page/Posts/Posts";
 import AddPost from "./page/AddPost/AddPost";
 import UpdatePost from "./page/UpdatePost/UpdatePost";
 import NotFound from "./page/NotFound/NotFound";
+import LogInRegister from "./page/LogInRegister/LogInRegister";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/posts" element={<Posts />} />
         <Route path="/addPost" element={<AddPost />} />
         <Route path="/updatePost" element={<UpdatePost />} />
+        <Route path="/authentication" element={<LogInRegister />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
