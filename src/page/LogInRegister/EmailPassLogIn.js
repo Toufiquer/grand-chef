@@ -1,10 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const EmailPassLogIn = ({ setToggle }) => {
+  const emailRef = useRef();
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    console.log(email, " => Line No: 7");
+    fetch("http://localhost:5000/jwt", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.token) {
+          const dataToken = JSON.stringify(data.token);
+          localStorage.setItem("token", dataToken);
+          navigate("/");
+        } else {
+          toast.error("Please Try Again", {
+            toastId: "accessTokenError ",
+          });
+        }
+      });
+  };
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div class="mb-6">
           <label
             for="email"
@@ -15,6 +40,7 @@ const EmailPassLogIn = ({ setToggle }) => {
           <input
             type="email"
             id="email"
+            ref={emailRef}
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="john.doe@company.com"
             required
