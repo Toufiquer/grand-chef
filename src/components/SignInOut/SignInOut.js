@@ -13,15 +13,15 @@ const SignInOut = () => {
   };
   return (
     <>
-      <div class="flex md:order-2">
+      <div className="flex md:order-2">
         {user ? (
           <Link to="/authentication">
-            <button onClick={handleSignIn} type="button" class={btnStyle}>
+            <button onClick={handleSignIn} type="button" className={btnStyle}>
               Sign In
             </button>
           </Link>
         ) : (
-          <button onClick={handleSignOut} type="button" class={btnStyle}>
+          <button onClick={handleSignOut} type="button" className={btnStyle}>
             Sign Out
           </button>
         )}
