@@ -9,12 +9,13 @@ import UpdatePost from "./page/UpdatePost/UpdatePost";
 import NotFound from "./page/NotFound/NotFound";
 import LogInRegister from "./page/LogInRegister/LogInRegister";
 import EditPosts from "./page/EditPost/EditPosts";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div>
+    <div className={` bg-white dark:bg-gray-900`}>
       <Nav />
-      <div className="mt-20 w-full"></div>
+      <div className="pt-20 w-full bg-white dark:bg-gray-900"></div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/private" element={<Private />} />
@@ -25,6 +26,7 @@ function App() {
         <Route path="/authentication" element={<LogInRegister />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
